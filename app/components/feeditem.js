@@ -2,9 +2,7 @@ import React from 'react';
 import StatusUpdate from './statusupdate';
 import CommentThread from './commentthread';
 import Comment from './comment';
-import {postComment} from '../server';
-import {unlikeFeedItem} from '../server';
-import {likeFeedItem} from '../server';
+import {postComment, unlikeFeedItem, likeFeedItem} from '../server';
 
 export default class FeedItem extends React.Component {
   constructor(props) {
@@ -130,7 +128,7 @@ export default class FeedItem extends React.Component {
             data.comments.map((comment, i) => {
               // i is comment's index in comments array
               return (
-                <Comment key={i} author={comment.author} postDate={comment.postDate}>{comment.contents}</Comment>
+                <Comment key={i} author={comment.author} postDate={comment.postDate} likeCounter={comment.likeCounter} feedItem={this.state._id} index={i}>{comment.contents}</Comment>
               );
             })
             }
